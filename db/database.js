@@ -40,14 +40,17 @@ db.exec(`
 `);
 
 db.transaction = function transaction(fn) {
-  db.exec('BEGIN IMMEDIATE');
-  try {
-    fn();
-    db.exec('COMMIT');
-  } catch (err) {
-    db.exec('ROLLBACK');
-    throw err;
-  }
+  return function (...args) {
+    db.exec('BEGIN IMMEDIATE');
+    try {
+      const result = fn(...args);
+      db.exec('COMMIT');
+      return result;
+    } catch (err) {
+      db.exec('ROLLBACK');
+      throw err;
+    }
+  };
 };
 
 module.exports = db;
