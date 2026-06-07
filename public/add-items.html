@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Langkah 2 — Barang Sewaan | SplitGo</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="page">
+    <div class="container container--wide">
+      <button type="button" class="back-btn" id="back-btn">&larr; Kembali</button>
+
+      <nav class="steps" aria-label="Langkah">
+        <div class="steps__item steps__item--done">
+          <span class="steps__number">✓</span>
+          <span class="steps__label">Grup &<br>Peserta</span>
+        </div>
+        <div class="steps__item steps__item--active">
+          <span class="steps__number">2</span>
+          <span class="steps__label">Barang<br>Sewaan</span>
+        </div>
+        <div class="steps__item">
+          <span class="steps__number">3</span>
+          <span class="steps__label">Hasil<br>Patungan</span>
+        </div>
+      </nav>
+
+      <header class="page-header">
+        <h1 class="page-header__title">Barang apa saja yang disewa?</h1>
+        <p class="page-header__subtitle">Untuk setiap barang, isi harga sewa lalu pilih siapa yang memakainya.</p>
+        <p class="page-header__trip" id="trip-name"></p>
+      </header>
+
+      <div class="info-box">
+        <p class="info-box__title">Cara kerjanya</p>
+        <p class="info-box__text">
+          Tracking pole Rp60.000 dipakai 2 orang → masing-masing bayar Rp30.000.
+          Carrier dipakai semua orang → dibagi rata ke semua yang dipilih.
+        </p>
+      </div>
+
+      <div class="items-container" id="items-container"></div>
+
+      <button type="button" class="btn btn-secondary btn-block add-item-btn" id="add-item">+ Tambah Barang Lain</button>
+
+      <p class="error-msg" id="form-error" hidden></p>
+
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="calculate-split">Hitung Patungan →</button>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">Langkah 2 dari 3</footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/format.js"></script>
+  <script src="/js/back.js"></script>
+  <script src="/js/add-items.js"></script>
+  <script>
+    setupBackButton('back-btn', '/create-trip.html', 'Nama trip dan peserta akan direset. Yakin ingin kembali?');
+  </script>
+</body>
+</html>

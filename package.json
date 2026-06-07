@@ -1,0 +1,14 @@
+{
+  "name": "splitgo",
+  "version": "1.0.0",
+  "description": "Split rental expenses fairly based on who actually used the gear",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "express": "^4.21.2",
+    "uuid": "^11.0.5"
+  }
+}

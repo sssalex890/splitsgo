@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Langkah 1 — Buat Grup | SplitGo</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+      <button type="button" class="back-btn" id="back-btn">&larr; Kembali</button>
+
+      <nav class="steps" aria-label="Langkah">
+        <div class="steps__item steps__item--active">
+          <span class="steps__number">1</span>
+          <span class="steps__label">Grup &<br>Peserta</span>
+        </div>
+        <div class="steps__item">
+          <span class="steps__number">2</span>
+          <span class="steps__label">Barang<br>Sewaan</span>
+        </div>
+        <div class="steps__item">
+          <span class="steps__number">3</span>
+          <span class="steps__label">Hasil<br>Patungan</span>
+        </div>
+      </nav>
+
+      <header class="page-header">
+        <h1 class="page-header__title">Siapa yang ikut?</h1>
+        <p class="page-header__subtitle">Isi nama trip dan semua orang yang terlibat dalam sewa barang.</p>
+      </header>
+
+      <div class="info-box">
+        <p class="info-box__title">Contoh</p>
+        <p class="info-box__text">Trip "Gunung Prau" dengan peserta: Samuel, Adit, Daniel, Ello.</p>
+      </div>
+
+      <form id="create-trip-form">
+        <div class="form-section">
+          <div class="form-section__title">
+            <span class="form-section__num">1</span>
+            Nama Trip
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="trip-name">Nama kegiatan / gunung</label>
+            <p class="form-hint">Bisa nama gunung, acara, atau apapun yang mudah diingat grup.</p>
+            <input class="form-input" type="text" id="trip-name" placeholder="Contoh: Gunung Prau" required>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section__title">
+            <span class="form-section__num">2</span>
+            Daftar Peserta
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nama setiap orang</label>
+            <p class="form-hint">Tulis nama asli atau panggilan — yang penting grup paham siapa siapa.</p>
+            <div class="participant-list" id="participant-list"></div>
+          </div>
+          <button type="button" class="btn btn-secondary btn-block" id="add-participant">+ Tambah Peserta</button>
+        </div>
+
+        <p class="error-msg" id="form-error" hidden></p>
+
+        <div class="btn-group">
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Lanjut ke Barang Sewaan →</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <footer class="footer">Langkah 1 dari 3</footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/back.js"></script>
+  <script src="/js/create-trip.js"></script>
+  <script>
+    setupBackButton('back-btn', '/', 'Data yang sudah diinput akan direset. Yakin ingin kembali?');
+  </script>
+</body>
+</html>
