@@ -1,11 +1,11 @@
-const Database = require('better-sqlite3');
+const { DatabaseSync } = require('node:sqlite');
 const path = require('path');
 
 const dbPath = path.join(__dirname, 'splitgo.db');
-const db = new Database(dbPath);
+const db = new DatabaseSync(dbPath);
 
-db.pragma('journal_mode = WAL');
-db.pragma('foreign_keys = ON');
+db.exec('PRAGMA journal_mode = WAL');
+db.exec('PRAGMA foreign_keys = ON');
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS trips (
@@ -38,5 +38,16 @@ db.exec(`
     FOREIGN KEY (participant_id) REFERENCES participants(id) ON DELETE CASCADE
   );
 `);
+
+db.transaction = function transaction(fn) {
+  db.exec('BEGIN IMMEDIATE');
+  try {
+    fn();
+    db.exec('COMMIT');
+  } catch (err) {
+    db.exec('ROLLBACK');
+    throw err;
+  }
+};
 
 module.exports = db;
